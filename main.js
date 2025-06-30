@@ -10,7 +10,7 @@ function setupWebSocket() {
   const ws = new WebSocket("ws://13.209.19.146:3000");
 
   ws.on("open", () => {
-    console.log("📡 WebSocket 연결 성공");
+    console.log("WebSocket 연결 성공");
   });
 
   let loggedInTrainerId = null;
@@ -49,22 +49,22 @@ function createWindow() {
   });
 
   if (isDev) {
-    console.log("🛠 개발 모드 - http://localhost:5173 에서 로딩");
+    console.log("개발 모드 - http://localhost:5173 에서 로딩");
     mainWindow.loadURL("http://localhost:5173");
   } else {
     const distPath = path.join(__dirname, "frontend", "dist", "index.html");
-    console.log("📦 배포 모드 - 로컬 HTML 로딩:", distPath);
+    console.log("배포 모드 - 로컬 HTML 로딩:", distPath);
     mainWindow.loadFile(distPath);
   }
 
   // mainWindow.webContents.openDevTools();
 
   mainWindow.webContents.on("did-finish-load", () => {
-    console.log("✅ 렌더러 로딩 완료");
+    console.log("렌더러 로딩 완료");
   });
 
   mainWindow.webContents.on("did-fail-load", (e, code, desc) => {
-    console.error("❌ 로딩 실패:", code, desc);
+    console.error("로딩 실패:", code, desc);
   });
 }
 
@@ -73,9 +73,9 @@ app.whenReady().then(async () => {
   try {
     const { default: isDevImport } = await import("electron-is-dev");
     isDev = isDevImport;
-    console.log(`🔧 실행 환경: ${isDev ? "개발" : "배포"} 모드`);
+    console.log(`실행 환경: ${isDev ? "개발" : "배포"} 모드`);
   } catch (err) {
-    console.error("❌ isDev 판단 실패:", err);
+    console.error("isDev 판단 실패:", err);
   }
 
   createWindow();
