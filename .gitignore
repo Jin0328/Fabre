@@ -2,8 +2,8 @@ node_modules/
 .env
 .gitattributes
 ..bfg-report
-dist/
 !dist/latest.yml
 !dist/**/*.blockmap
+dist/
 node_modules
 newvenv/capstone-key.pem
